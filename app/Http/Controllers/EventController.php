@@ -82,7 +82,6 @@ class EventController extends Controller
             $ld = $request->detail_desc;
             $es = $request->Starting_date;
             $ee = $request->End_date;
-            $s = $request->Starting_Time;
             $e = $request->End_Time;
             $mx = $request->max_price;
             $ev = false;
@@ -106,7 +105,6 @@ class EventController extends Controller
             $obj->detail_desc=$ld;
             $obj->Starting_date=$es;
             $obj->End_date=$ee;
-            $obj->Starting_Time=$s;
             $obj->End_Time=$e;
             $obj->max_price=$mx;
             $obj->minimum_price=$m;
@@ -141,14 +139,14 @@ class EventController extends Controller
         // ->select('bidings.agency_id','users.name','bidings.event_id','events.title','bidings.bid_price')
         // ->get()->sortBy('event_id');
 
-        $data=DB::table('bidings')
-        ->join('users','users.id','=','bidings.agency_id')
-        ->where('bidings.event_id', '=', $id)
-        ->join('events','events.id','=','bidings.event_id')
-        ->get();
+        // $data=DB::table('bidings')
+        // ->join('users','users.id','=','bidings.agency_id')
+        // ->where('bidings.event_id', '=', $id)
+        // ->join('events','events.id','=','bidings.event_id')
+        // ->get();
         
 
-        return view('Event/showbids')->with('d',['a'=>$data, 'b'=>$id]); 
+        // return view('Event/showbids')->with('d',['a'=>$data, 'b'=>$id]); 
         
     }
 
@@ -172,7 +170,19 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $aid = $request->agency_id;
+        $fp = $request->final_price;
+        $eeid = $request->eid;
+
+        $obj = events::find($eeid);
+        $obj->agency_id = $aid;
+        $obj->price = $fp;
+        $obj->status = 1;
+
+        $obj->save();
+
+        return redirect('/EventInfo/'.$eeid);
+     
     }
 
     /**
@@ -194,9 +204,16 @@ class EventController extends Controller
      */
     public function eventInfo($id)
     {
+        
+        $d=DB::table('bidings')
+        ->join('users','users.id','=','bidings.agency_id')
+        ->join('events','events.id','=','bidings.event_id')
+        ->select('users.name','users.id as uid','bidings.bid_price','events.id')->get();
+
+
         $data=events::find($id);
         // echo $data;
-        return view('Event/showEventInfo')->with('data',$data);
+        return view('Event/showEventInfo')->with('data',['a'=>$data, 'bids'=>$d]);
         // echo $data;
     }
 }

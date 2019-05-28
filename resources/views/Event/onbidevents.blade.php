@@ -74,10 +74,11 @@
                             <button id="btn-card3"><i class="fas fa-trash-alt"></i> Delete</button>
                         @endif
                         @if(Auth::user()->role == 'Agency')
-                            <button id="btn-card2" style="width: 100%"><i class="fas fa-info-circle"></i> Info</button>
+                            <button id="btn-card2" style="width: 100%" onClick="document.location.href='/EventInfo/{{ $item->id }}'"><i class="fas fa-info-circle"></i> Info</button>
                         @endif 
                         @if(Auth::user()->role == 'Users')
-                            <button id="btn-card"><i class="fas fa-location-arrow"></i> Going</button>
+                        <a href="/userEvent/create/{{ $item->id }}" class="btn btn-primay">going event</a>
+                            <button id="btn-card"><i class="fas fa-location-arrow" onClick="document.location.href='/userEvent'"></i> Going</button>
                             <button id="btn-card2" onClick="document.location.href='/EventInfo/{{ $item->id }}'"><i class="fas fa-info-circle"></i> Info</button>
                         @endif 
                     </div>

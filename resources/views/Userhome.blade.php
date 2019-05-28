@@ -14,7 +14,15 @@
                         </div>
                     @endif
 
-                    You are logged in! User
+                    You are logged in! User 
+                    <a href="/Event" class="btn btn-primay">Show event</a>
+
+                        @foreach ($d as $item)
+                            {{$item->id }}
+                            {{$item->user_id }}
+                        @endforeach
+
+                    
                 </div>
             </div>
         </div>

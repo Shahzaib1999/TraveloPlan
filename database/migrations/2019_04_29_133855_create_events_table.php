@@ -19,14 +19,15 @@ class CreateEventsTable extends Migration
             $table->text('description');
             $table->longtext('detail_desc');
             $table->string('starting_date');
-            $table->string('end_date');
-            $table->string('starting_Time');
+            $table->string('end_date');  
             $table->string('end_Time');
             $table->integer('max_price');
             $table->integer('minimum_price');
             $table->string('status');
             $table->string('cities');
             $table->binary('image');
+            $table->integer('agency_id')->nullable();
+            $table->integer('price')->nullable();
             $table->timestamps();
         });
     }

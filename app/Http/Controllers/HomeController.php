@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\user_events;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data=user_events::all()->where('user_id','=',Auth::user()->id);
+        return view('Userhome')->with('d',$data);
     }
 }

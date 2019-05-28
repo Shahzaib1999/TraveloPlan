@@ -26,7 +26,7 @@ Route::get('/home',function(){
     else if(Auth::user()->role == 'Admin'){
         return view('Adminhome');
     }else if(Auth::user()->role == 'Users'){
-        return view('Userhome');
+        return redirect('/Event');
     }
     else if(Auth::user()->role == 'Agency'){
         return view('Agencyhome');
@@ -36,10 +36,17 @@ Route::get('/home',function(){
 });
 
 // Events routes
+Route::resource('/home','HomeController');
+
 Route::resource('/Event','EventController');
 Route::get('/EventInfo/{id}','EventController@eventInfo');
 Route::get('/Events','EventController@eventname');
 
+Route::get('/userEvent/create/{id}','userEventController@create');
+
+
+
+Route::resource('/userEvent','userEventController');
 
 Route::resource('/bid','bidingController');
 

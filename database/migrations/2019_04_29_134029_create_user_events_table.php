@@ -15,7 +15,6 @@ class CreateUserEventsTable extends Migration
     {
         Schema::create('user_events', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('going');
             $table->integer('user_id');
             $table->string('user_name');
             $table->string('email');
@@ -23,7 +22,6 @@ class CreateUserEventsTable extends Migration
             $table->string('cnic');
             $table->integer('number_of_packages');
             $table->integer('total_price');
-            $table->string('interested');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('user');
         });

@@ -94,11 +94,6 @@
             </div>
 
             <div class="form-group mt-4">
-              <label>Bidding Starts on</label>
-              <input type="datetime-local" name="Starting_Time" class="form-control" required>
-            </div>
-
-            <div class="form-group mt-4">
               <label>Bidding Ends on</label>
               <input type="datetime-local" name="End_Time" class="form-control" required>
             </div>

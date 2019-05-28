@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\events;
-use App\biding;
+use App\bidings;
 use DB;
+use App\user_events;
 
-class bidingController extends Controller
+
+class userEventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +19,7 @@ class bidingController extends Controller
      */
     public function index()
     {
-        $data=DB::table('bidings')
-        ->join('users','users.id','=','bidings.agency_id')
-        ->join('events','events.id','=','bidings.event_id')
-        ->select('bidings.agency_id','users.name','bidings.event_id','events.title','bidings.bid_price')->get()->sortBy('event_id');
-        return view('biding/showbid')->with('d',$data); 
+        //
     }
 
     /**
@@ -31,7 +29,11 @@ class bidingController extends Controller
      */
     public function create($id)
     {
-        echo "create";
+        //echo "id found".$id;
+         $data=events::find($id);
+        
+         return view('userEvent/addUserEvent')->with('data',$data);
+        
     }
 
     /**
@@ -42,20 +44,29 @@ class bidingController extends Controller
      */
     public function store(Request $request)
     {
-        $aid=Auth::user()->id;
-        $eid=$request->event_id;
-        $bid=$request->bid_price;
-
-        $obj=new biding();
-        $obj->agency_id=$aid;
-        $obj->event_id=$eid;
-        $obj->bid_price=$bid;
-        $obj->save();
+        $uid = $request->userId;
+        $uname = $request->userName;
+        $uemail = $request->email;
+        $ucn = $request->contactNumber;
+        $uc = $request->cnic;
+        $unop = $request->numberOfPackages;
+        $utp = $request->totalPrice;
 
 
-        echo "<script> alert('Bid Added') </script>";
-        return redirect('/EventInfo/'.$eid);
-    }
+        $obj=new user_events();
+            $obj->user_id=$uid;
+            $obj->user_name=$uname;
+            $obj->email=$uemail;
+            $obj->contact_number=$ucn;
+            $obj->cnic=$uc;
+            $obj->number_of_packages=$unop;
+            $obj->total_price=$utp;
+
+            $obj->save();
+
+            return view('Userhome');
+            
+        }
 
     /**
      * Display the specified resource.
@@ -65,7 +76,7 @@ class bidingController extends Controller
      */
     public function show($id)
     {
-        echo "show";
+        //
     }
 
     /**
@@ -76,17 +87,7 @@ class bidingController extends Controller
      */
     public function edit($id)
     {
-       
-        if(Auth::user()->role == 'Agency'){
-            
-            $d=events::find($id);
-
-            
-            return view('biding/Addbid')->with('data',$d);
-
-        }
-
-       // return redirect()->route('/login');
+        //
     }
 
     /**
@@ -98,7 +99,7 @@ class bidingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        echo "update";
+        //
     }
 
     /**
@@ -109,6 +110,6 @@ class bidingController extends Controller
      */
     public function destroy($id)
     {
-        echo "destroy";
+        //
     }
 }
