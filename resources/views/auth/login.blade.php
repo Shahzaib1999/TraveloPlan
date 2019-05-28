@@ -52,7 +52,7 @@
 					<p id="card-heading">Login Your Account</p>
 				</div>
 				<div class="card-body mt-2" style="border:1px solid #dfdfdf; padding: 30px">
-					<h3 class="font-weight-bold mt-2">LOGIN</h3>
+					<h3 class="font-weight-bold mt-2">ll</h3>
 					{{-- <p class="mt-3">If you have an account with us, please log in.</p> --}}
 					<form class="mt-4" method="POST" action="{{ route('login') }}" id="color">
 						{{ csrf_field() }}
