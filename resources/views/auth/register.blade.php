@@ -33,10 +33,15 @@
             color: #fff
         }
     
-        input[type='password'],input[type='email'],input[type='text'],#address{
-            /* border: 1px solid */
+        input[type='password'],input[type='email'],input[type='text']{
             background-color: #EFEFEF;
             padding: 20px;
+            color: #6F6F6F;
+            font-size: 15px;
+        }
+
+        #address{
+            background-color: #EFEFEF;
             color: #6F6F6F;
             font-size: 15px;
         }

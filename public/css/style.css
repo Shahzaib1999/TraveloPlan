@@ -1011,3 +1011,7 @@ input[type='text']{
 #detail{
     padding: 15px
 }
+
+.help-block{
+    color: red  
+}

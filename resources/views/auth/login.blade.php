@@ -56,13 +56,23 @@
 					{{-- <p class="mt-3">If you have an account with us, please log in.</p> --}}
 					<form class="mt-4" method="POST" action="{{ route('login') }}" id="color">
 						{{ csrf_field() }}
-						<div  class="form-group">
+						<div  class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 							<label for="exampleInputEmail1">Email</label>
 							<input type="email" class="form-control" Name="email" aria-describedby="emailHelp" placeholder="Enter email">
+							@if ($errors->has('name'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
 						</div>
-						<div class="form-group mt-4">
+						<div class="form-group mt-4{{ $errors->has('password') ? ' has-error' : '' }}">
 							<label for="password">Password</label>
 							<input type="password" class="form-control" Name="password" aria-describedby="emailHelp" placeholder="Enter password">
+							@if ($errors->has('name'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
 						</div>
 						<button type="submit" class="btn mt-4" id="submit">Submit</button>
 						<p class="mt-3">Don't have an account? <a href="{{ route('register') }}">Sign Up!</a></p>

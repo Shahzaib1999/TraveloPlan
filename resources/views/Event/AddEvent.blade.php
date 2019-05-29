@@ -85,17 +85,26 @@
 
             <div class="form-group mt-4">
               <label for="Starting_date">Event Starts on</label>
-              <input type="date" name="Starting_date" class="form-control" required>
+              <input type="date" name="Starting_date" class="form-control" id="startDate" onchange="eventStartValidate()" required>
+              <span hidden class="help-block ml-3">
+                <b>Date should be presert or future</b>
+              </span>
             </div>
 
             <div class="form-group mt-4">
               <label for="End_date">Event End on</label>
-              <input type="date" name="End_date" class="form-control" required>
+              <input type="date" name="End_date" class="form-control" id="endDate" onchange="eventEndValidate()" required>
+              <span hidden class="help-block ml-3">
+                <b>End date should be equall or greater then starting date</b>
+              </span>
             </div>
 
             <div class="form-group mt-4">
               <label>Bidding Ends on</label>
-              <input type="datetime-local" name="End_Time" class="form-control" required>
+              <input type="datetime-local" name="End_Time" class="form-control" id="endBid" onchange="biddingValidate()" required>
+              <span hidden class="help-block ml-3">
+                <b>Date should be equal or less then event starting date</b>
+              </span>
             </div>
 
             <div class="form-group mt-4">
@@ -112,7 +121,7 @@
               <label for="detail_description">Detailed Description</label><br>
             </div><br />
             
-            <div class="" id="editor" style="height:100px; width: 100%" onmouseout="a()" onkeydown="a()"></div>
+            <div id="editor" style="height:100px; width: 100%" onmouseout="a()" onkeydown="a()"></div>
 
             <div class="form-group mt-4">
               <label for="image">Image</label>
@@ -133,6 +142,54 @@
 
 <script type="text/javascript">
 
+  function eventStartValidate(){
+    var start = document.getElementById('startDate').value;
+    var date = new Date();
+    var startDate = date.getDate();
+    var month = date.getMonth();
+    var year = date.getFullYear();
+    var num = parseInt(month)
+    month = num + 1;
+
+    if (startDate < 10) {
+      startDate = "0" + startDate;
+    }
+    if (month < 10) {
+      month = "0" + month;
+    }
+
+    var now = year + '-' + month + '-' + startDate ;
+
+    if (now > start) {
+      document.getElementsByClassName('help-block')[0].hidden = false;
+    } else {
+      document.getElementsByClassName('help-block')[0].hidden = true;
+    }
+    
+  }
+
+  function eventEndValidate(){
+    var start = document.getElementById('startDate').value;
+    var end = document.getElementById('endDate').value;
+
+    if (start > end) {
+      document.getElementsByClassName('help-block')[1].hidden = false;
+    } else {
+      document.getElementsByClassName('help-block')[1].hidden = true;
+    }
+
+  }
+
+  function biddingValidate(){
+    var start = document.getElementById('startDate').value;
+    var end = document.getElementById('endBid').value;
+    
+    if (start < end.slice(0,10)) {
+      document.getElementsByClassName('help-block')[2].hidden = false;
+    } else {
+      document.getElementsByClassName('help-block')[2].hidden = true;
+    }
+  }
 
   var toolbarOptions = [
     [{ 'size': ['small', false, 'large', 'huge'] }],
@@ -161,7 +218,6 @@
   function a() {
   
     document.getElementById('ab').value = quill.container.childNodes[0].innerHTML;
-    console.log(quill.container.childNodes[0].innerHTML);
   
   }
 

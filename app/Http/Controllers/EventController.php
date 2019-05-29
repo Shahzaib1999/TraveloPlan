@@ -44,7 +44,7 @@ class EventController extends Controller
 
         }
 
-        return redirect()->route('/login');
+        return view('access');
         
     }
 
