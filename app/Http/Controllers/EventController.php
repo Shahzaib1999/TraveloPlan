@@ -147,6 +147,8 @@ class EventController extends Controller
         
 
         // return view('Event/showbids')->with('d',['a'=>$data, 'b'=>$id]); 
+
+        echo "show";
         
     }
 
@@ -158,7 +160,8 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        echo "hell";
+        $data=events::find($id);
+       return view('/Event/updateEvent')->with('data',$data);
     }
 
     /**
@@ -169,6 +172,77 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
+    {
+        if(Auth::user()->role == 'Admin'){
+            // $this->validate($request, [
+            //     'filename' => 'required',
+            //     'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            // ]);
+            $arr = [];
+            if($request->hasfile('filename')){
+
+                foreach($request->file('filename') as $image){
+                    // $image=$request->filename;
+                    $data = fopen($image, 'rb');
+                    $size = filesize($image);
+                    $contents = fread($data, $size);
+                    fclose($data);
+                    $encoded = base64_encode($contents);
+                    array_push($arr, $encoded);
+                    // echo serialize($arr);
+                }
+            }
+
+            $t = $request->title;
+            $d = $request->description;
+            $ld = $request->detail_desc;
+            $es = $request->Starting_date;
+            $ee = $request->End_date;
+            $e = $request->End_Time;
+            $mx = $request->max_price;
+            $ev = false;
+            $ci = $request->city;
+            $m = $request->minimum_price;
+        
+            // if($request->hasfile('filename'))
+            // {
+
+            //    foreach($request->file('filename') as $image)
+            //    {
+            //        $name=$image->getClientOriginalName();
+            //        $image->move(public_path().'/images/', $name);  
+            //        $data[] = $name;  
+            //    }
+            // }
+
+            $obj = events::find($id);
+            $obj->title=$t;
+            $obj->description=$d;
+            $obj->detail_desc=$ld;
+            $obj->Starting_date=$es;
+            $obj->End_date=$ee;
+            $obj->End_Time=$e;
+            $obj->max_price=$mx;
+            $obj->minimum_price=$m;
+            $obj ->status = $ev;
+            $obj ->cities = $ci;
+            $obj->image = json_encode($arr);
+            
+
+            $obj->save();
+
+                
+
+
+            echo "<script> alert('Event Added') </script>";
+            return redirect('Event');
+
+    }
+    }
+
+
+
+    public function updatestatus(Request $request, $id)
     {
         $aid = $request->agency_id;
         $fp = $request->final_price;

@@ -151,7 +151,7 @@
 <input hidden type="text" value="{{ $data['a']->status }}" id="status">
 <input hidden type="number" value="{{ $data['a']->max_price }}" id="max_price">
 
-<form action="/Event/{{ $data['a']->id }}" method="POST" id="update">
+<form action="/Events/{{ $data['a']->id }}" method="POST" id="update">
     {{ method_field('PUT') }}
     {{ csrf_field() }}
     

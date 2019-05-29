@@ -26,6 +26,21 @@ class HomeController extends Controller
     public function index()
     {
         $data=user_events::all()->where('user_id','=',Auth::user()->id);
-        return view('Userhome')->with('d',$data);
+
+        if (!Auth::user()) {
+            return redirect('login');
+        }
+        else if(Auth::user()->role == 'Admin'){
+            return view('Adminhome');
+        }else if(Auth::user()->role == 'Users'){
+            
+            return view('Userhome')->with('d',$data);
+        }
+        else if(Auth::user()->role == 'Agency'){
+            return view('Agencyhome');
+        }else{
+            return redirect('login');
+        }
+        
     }
 }

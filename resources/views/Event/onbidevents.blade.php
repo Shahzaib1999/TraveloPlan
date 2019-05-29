@@ -69,7 +69,7 @@
                     </div>
                     <div class="row" id="btn-main">
                         @if(Auth::user()->role == 'Admin')
-                            <button id="btn-card"><i class="fas fa-edit"></i> Edit</button>
+                            <button id="btn-card"><i class="fas fa-edit"><a href="/Event/{{ $item->id }}/edit" class="btn btn-primay"> Edit </a></i> </button>
                             <button id="btn-card2" onClick="document.location.href='/EventInfo/{{ $item->id }}'"><i class="fas fa-info-circle"></i> Info</button><br />
                             <button id="btn-card3"><i class="fas fa-trash-alt"></i> Delete</button>
                         @endif
