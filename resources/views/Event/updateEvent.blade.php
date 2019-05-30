@@ -115,14 +115,15 @@
               <label for="detail_description">Detailed Description</label><br>
             </div><br />
             
-            <div class="" id="editor" style="height:100px; width: 100%" onmouseout="a()" onkeydown="a()">{{$data->detail_desc}}</div>
+            <div id="editor" style="height:100px; width: 100%" onmouseout="a()" onkeydown="a()"></div>
+            <input type="text" id="detail" value="{{$data->detail_desc}}" hidden>
 
             <div class="form-group mt-4">
               <label for="image">Image</label>
               <input type="file" name="filename[]" class="form-control" multiple required>
             </div>
             <input type="text" id="ab" name="detail_desc" hidden>
-            <button type="submit" class="btn mt-5" style="background:#0e8e4c;color:#fff">Update Event</button>
+            <button type="submit" class="btn btn-success text-white mt-5">Update Event</button>
 
 
           </form>
@@ -136,6 +137,16 @@
 
 <script type="text/javascript">
 
+    var quill = new Quill('#editor', {
+      modules: {
+        toolbar: toolbarOptions
+      },
+      theme: 'snow'
+    });
+
+    (function(){
+      quill.container.childNodes[0].innerHTML = document.getElementById('detail').value;
+    })();
 
   var toolbarOptions = [
     [{ 'size': ['small', false, 'large', 'huge'] }],
@@ -154,18 +165,10 @@
     ['clean'] 
   ];
 
-  var quill = new Quill('#editor', {
-    modules: {
-      toolbar: toolbarOptions
-    },
-    theme: 'snow'
-  });
+  
 
   function a() {
-  
     document.getElementById('ab').value = quill.container.childNodes[0].innerHTML;
-    console.log(quill.container.childNodes[0].innerHTML);
-  
   }
 
 

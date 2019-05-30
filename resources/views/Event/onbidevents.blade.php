@@ -69,9 +69,9 @@
                     </div>
                     <div class="row" id="btn-main">
                         @if(Auth::user()->role == 'Admin')
-                            <button id="btn-card"><i class="fas fa-edit"><a href="/Event/{{ $item->id }}/edit" class="btn btn-primay"> Edit </a></i> </button>
+                            <button id="btn-card" onclick="document.location.href='/Event/{{ $item->id }}/edit'"><i class="fas fa-edit"> Edit</i></button>
                             <button id="btn-card2" onClick="document.location.href='/EventInfo/{{ $item->id }}'"><i class="fas fa-info-circle"></i> Info</button><br />
-                            <form method="POST" action="/Event/{{ $item->id }}" >
+                            <form method="POST" action="/Event/{{ $item->id }}" style="width: 100%">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
     
@@ -82,7 +82,7 @@
                             <button id="btn-card2" style="width: 100%" onClick="document.location.href='/EventInfo/{{ $item->id }}'"><i class="fas fa-info-circle"></i> Info</button>
                         @endif 
                         @if(Auth::user()->role == 'Users')
-                        <a href="/userEvent/create/{{ $item->id }}" class="btn btn-primay">going event</a>
+                            <a href="/userEvent/create/{{ $item->id }}" class="btn btn-primay">going event</a>
                             <button id="btn-card"><i class="fas fa-location-arrow" onClick="document.location.href='/userEvent'"></i> Going</button>
                             <button id="btn-card2" onClick="document.location.href='/EventInfo/{{ $item->id }}'"><i class="fas fa-info-circle"></i> Info</button>
                         @endif 
