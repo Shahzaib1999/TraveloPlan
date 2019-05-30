@@ -41,17 +41,14 @@ Route::get('/', function () {
 Route::resource('/home','HomeController');
 
 Route::resource('/Event','EventController');
-Route::get('/EventInfo/{id}','EventController@eventInfo');
-//Route::get('/Event/{id}','EventController@edit');
 
+Route::get('/EventInfo/{id}','EventController@eventInfo');
+
+//Route::get('/Event/{id}','EventController@edit');
 
 Route::put('/Events/{id}','EventController@updatestatus');
 
-
 Route::get('/userEvent/create/{id}','userEventController@create');
-
-
-
 
 Route::resource('/userEvent','userEventController');
 
