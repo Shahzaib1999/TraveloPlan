@@ -9,8 +9,8 @@
 
 /*-- Reset Code --*/
 
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
-article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,hgroup,menu,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure,footer, hgroup, menu, section {display: block;}
 ol{list-style:none;padding:0;margin:0;}
 blockquote,q{quotes:none;}
 blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
@@ -27,8 +27,6 @@ a{text-decoration:none;}
 .vertical-base{vertical-align:baseline;}
 .vertical-top{vertical-align:top;}
 .underline{	padding-bottom:3px;	border-bottom: 1px solid #eee;}
-nav.vertical ul li{display:block;}
-nav.horizontal ul li{display: inline-block;}
 img{max-width:100%;}
 
 /*-- Reset Code --*/
@@ -38,7 +36,7 @@ img{max-width:100%;}
 /*-- Index-Page-Styling --*/
 
 body {
-/* background: url("../images/bg.jpg"); */
+/* background: url("../images/bg.jpg"); */  
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-position: center;
@@ -100,10 +98,6 @@ text-align: center;
     margin-bottom: 0;
 }
 
-.container {
-width: 75%;
-margin: 0 auto;
-}
 
 .content-left, .content-right {
 width: 50%;
@@ -421,9 +415,6 @@ color: #FFF;
 h1 {
     margin: 100px 0;
 }
-.container {
-    width: 62%;
-}
 #register {
     padding: 47px 47px 48px;
 }
@@ -436,9 +427,6 @@ div#login {
 h1 {
     margin: 50px 0;
 }
-.container {
-    width: 75%;
-}
 div#register {
     padding: 47px;
 }
@@ -450,15 +438,9 @@ div#login {
 }
 
 @media screen and (max-width: 1440px) {
-.container {
-    width: 82.5%;
-}
 }
 
 @media screen and (max-width: 1366px) {
-.container {
-    width: 88%;
-}
 }
 
 @media screen and (max-width: 1280px) {
@@ -480,9 +462,6 @@ div#register {
 h1 {
     margin: 35px 0;
     font-size: 40px;
-}
-.container {
-    width: 95%;
 }
 .content-left p {
     left: 53%;
@@ -566,10 +545,6 @@ div#register {
 }
 
 @media screen and (max-width: 853px) {
-.container {
-    width: 65%;
-    padding-bottom: 500px;
-}
 .content-left, .content-right {
     width: 100%;
 }
@@ -592,17 +567,11 @@ div#register {
 }
 
 @media screen and (max-width: 800px) {
-.container {
-    width: 70%;
-}
 }
 
 @media screen and (max-width: 736px) {
 /*--w3layouts--*/
 /*--agileits--*/
-.container {
-    width: 75%;
-}
 }
 
 @media screen and (max-width: 667px) {
@@ -621,9 +590,6 @@ h1 {
 @media screen and (max-width: 603px) {
 h1 {
     font-size: 35px;
-}
-.container {
-    width: 80%;
 }
 }
 
@@ -685,9 +651,6 @@ div#login {
 @media screen and (max-width: 414px) {
 h1 {
     font-size: 25px;
-}
-.container {
-    width: 95%;
 }
 .list {
     width: 83%;
@@ -793,7 +756,7 @@ li.fb.w3ls {
 
 input[type='text']{
     background-color: #EFEFEF;
-    }
+}
 
 /*--- Responsive Code ---*/
 /* @font-face {
@@ -916,14 +879,6 @@ input[type='text']{
 }
 
 
-/* Event Info */    
-.containera {
-    /* width: 10% */
-    position: relative;
-    text-align: center;
-    color: white;
-    position: relative;
-}
 
 .img {
     width: 100%;
