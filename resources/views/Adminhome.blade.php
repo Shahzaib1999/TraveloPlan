@@ -29,11 +29,11 @@
 </style>
 
 <div class="container-fluid">
-    <div id="dashboard-heading">
+    <div class="mt-2" id="dashboard-heading">
         Dashboard
     </div>
     <div>
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-md-12">
                 <div class="card" id="admin-dashboard">
                     <div class="card-body">
@@ -47,55 +47,128 @@
         </div><!-- /.row -->
 
         <div class="row mt-4">
-            <div class="col-md-12">
+                <div class="col-md-12">
                     <div class="main-card mb-3 card">
-                            <div class="card-header text-center">
-                                Users
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table table-responsive-sm table-hover table-outline mb-0">
-                                            <thead class="thead-light">
-                                            <tr>
-                                                <th class="text-center">#</th>
-                                                <th class="text-center">User</th>
-                                                <th class="text-center">Email</th>
-                                                <th class="text-center">Contact No.</th>
-                                                <th class="text-center">Status</th>
-                                                <th class="text-center">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($d as $item)
-                                            <tr style="line-height: 50px">
-                                                <td class="text-center text-muted">    
-                                                    {{$item->id}}
-                                                </td>
-                                                <td class="text-center">
-                                                    {{$item->name}}
-                                                </td>
-                                                <td class="text-center">
-                                                    {{$item->email}}
-                                                </td>
-                                                <td class="text-center">
-                                                    {{$item->contact}}
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="badge badge-success">Not Blocked</div>
-                                                </td>
-                                                <td class="text-center">
-                                                    <button class="btn btn-danger">Block</button>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                </table>
-                            </div>
-                            <div class="d-block card-footer mx-auto w-100" >
-                                {{$d->links("pagination::bootstrap-4")}}
-                            </div>
+                        <div class="card-header text-center font-weight-bold">
+                            Users
                         </div>
-            </div><!-- /.col-md-12 -->
-        </div><!-- /.row -->
+                        <div class="table-responsive">
+                            <table class="table table-responsive-sm table-hover table-outline mb-0">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th class="text-center">User</th>
+                                        <th class="text-center">Email</th>
+                                        <th class="text-center">Contact No.</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($d['user'] as $item)
+                                    <tr style="line-height: 50px">
+                                        <td class="text-center text-muted">
+                                            {{$item->id}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{$item->name}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{$item->email}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{$item->contact}}
+                                        </td>
+                                        <td class="text-center">
+                                            @if($item->block == false)
+                                            <div class="badge badge-success">Not Blocked</div>
+                                            @else
+                                            <div class="badge badge-danger">Blocked</div>
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
+                                            @if($item->block == false)
+                                            <button class="btn btn-danger">Block</button>
+                                            @else
+                                            <button class="btn btn-success">UnBlock</button>
+                                            @endif
+            
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-block card-footer mx-auto w-100">
+                            {{$d['user']->links("pagination::bootstrap-4")}}
+                        </div>
+                    </div><!-- /.card -->
+                </div><!-- /.col-md-12 -->
+            </div><!-- /.row -->
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                        <div class="card-header text-center font-weight-bold">
+                            Travel Agencies
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-responsive-sm table-hover table-outline mb-0">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th class="text-center">User</th>
+                                        <th class="text-center">Email</th>
+                                        <th class="text-center">Contact No.</th>
+                                        <th class="text-center">Address</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($d['agency'] as $item)
+                                    <tr style="line-height: 50px">
+                                        <td class="text-center text-muted">
+                                            {{$item->id}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{$item->name}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{$item->email}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{$item->contact}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{$item->agency_address}}
+                                        </td>
+                                        <td class="text-center">
+                                            @if($item->block == false)
+                                            <div class="badge badge-success">Not Blocked</div>
+                                            @else
+                                            <div class="badge badge-danger">Blocked</div>
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
+                                            @if($item->block == false)
+                                            <button class="btn btn-danger">Block</button>
+                                            @else
+                                            <button class="btn btn-success">UnBlock</button>
+                                            @endif
+            
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-block card-footer mx-auto w-100">
+                            {{$d['agency']->links("pagination::bootstrap-4")}}
+                        </div>
+                    </div><!-- /.card -->
+                </div><!-- /.col-md-12 -->
+            </div><!-- /.row -->
     
     </div>
 

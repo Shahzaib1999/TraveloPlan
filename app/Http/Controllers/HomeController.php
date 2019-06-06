@@ -32,8 +32,10 @@ class HomeController extends Controller
             return redirect('login');
         }
         else if(Auth::user()->role == 'Admin'){
-            $data = User::orderBy('id','asc')->paginate(5);
-            return view('Adminhome')->with('d',$data);;
+            $agency = User::where('role','Agency')->orderBy('id','asc')->simplePaginate(5);
+            $user = User::where('role','Users')->orderBy('id','asc')->simplePaginate(5);
+            // print_r($admin);
+            return view('Adminhome')->with('d',['agency'=>$agency,'user'=>$user]);;
         }else if(Auth::user()->role == 'Users'){
             $data = user_events::all()->where('user_id','=',Auth::user()->id);
             return view('Userhome')->with('d',$data);
