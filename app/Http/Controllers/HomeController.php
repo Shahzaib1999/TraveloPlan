@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\user_events;
+use App\User;
 use Auth;
 
 class HomeController extends Controller
@@ -25,14 +27,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = user_events::all()->where('user_id','=',Auth::user()->id);
-
+        
         if (!Auth::user()) {
             return redirect('login');
         }
         else if(Auth::user()->role == 'Admin'){
-            return view('Adminhome');
+            $data = User::orderBy('id','asc')->paginate(5);
+            return view('Adminhome')->with('d',$data);;
         }else if(Auth::user()->role == 'Users'){
+            $data = user_events::all()->where('user_id','=',Auth::user()->id);
             return view('Userhome')->with('d',$data);
         }
         else if(Auth::user()->role == 'Agency'){

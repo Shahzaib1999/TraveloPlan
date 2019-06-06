@@ -15,8 +15,6 @@
         /* overflow-x: hidden; */
     }
 
-    .card-heading {}
-
     #dashboard-heading {
         font-size: 30px;
         font-weight: 500;
@@ -24,82 +22,84 @@
 
     #admin-dashboard {
         /* margin: 20px; */
-        background: #E6E6E6;
+        /* background: #E6E6E6; */
         box-shadow: 0px 0px 15px -3px;
     }
 
-
-
-    #sidebar-wrapper {
-        min-height: 100vh;
-        margin-left: -15rem;
-        -webkit-transition: margin .25s ease-out;
-        -moz-transition: margin .25s ease-out;
-        -o-transition: margin .25s ease-out;
-        transition: margin .25s ease-out;
-    }
-
-    #sidebar-wrapper .sidebar-heading {
-        padding: 0.875rem 1.25rem;
-        font-size: 1.2rem;
-    }
-
-    #sidebar-wrapper .list-group {
-        width: 15rem;
-    }
-
-    #page-content-wrapper {
-        min-width: 100vw;
-    }
-
-    #wrapper.toggled #sidebar-wrapper {
-        margin-left: 0;
-    }
-
-    @media (min-width: 768px) {
-        #sidebar-wrapper {
-            margin-left: 0;
-        }
-
-        #page-content-wrapper {
-            min-width: 0;
-            width: 100%;
-        }
-
-        #wrapper.toggled #sidebar-wrapper {
-            margin-left: -15rem;
-        }
-    }
 </style>
 
+<div class="container-fluid">
+    <div id="dashboard-heading">
+        Dashboard
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" id="admin-dashboard">
+                    <div class="card-body">
+                        <h4 class="card-title mb-0">Traffic</h4>
+                        <div class="small text-muted">November 2017</div>
+                        <canvas id="myChart" width="400" height="120"></canvas>
+                        
+                    </div><!-- /.card-body -->
+                </div><!-- /.card -->
+            </div><!-- /.col-md-12 -->
+        </div><!-- /.row -->
 
-
-<div class="container">
-        <div id="dashboard-heading">
-                Dashboard
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card" id="admin-dashboard">
-                        <div class="card-heading">Dashboard</div>
-
-                        <div class="panel-body">
-                            <canvas id="myChart" width="400" height="400"></canvas>
-                            @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
+        <div class="row mt-4">
+            <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                            <div class="card-header text-center">
+                                Users
                             </div>
-                            @endif
-
-                            You are logged in! As Admin
-
-                            <a href="/Event/create" class="btn btn-primay">Add event</a>
-                            <a href="/Event" class="btn btn-primay">Show event</a>
+                            <div class="table-responsive">
+                                <table class="table table-responsive-sm table-hover table-outline mb-0">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th class="text-center">#</th>
+                                                <th class="text-center">User</th>
+                                                <th class="text-center">Email</th>
+                                                <th class="text-center">Contact No.</th>
+                                                <th class="text-center">Status</th>
+                                                <th class="text-center">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($d as $item)
+                                            <tr style="line-height: 50px">
+                                                <td class="text-center text-muted">    
+                                                    {{$item->id}}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{$item->name}}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{$item->email}}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{$item->contact}}
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="badge badge-success">Not Blocked</div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-danger">Block</button>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                </table>
+                            </div>
+                            <div class="d-block card-footer mx-auto w-100" >
+                                {{$d->links("pagination::bootstrap-4")}}
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-</div>
+            </div><!-- /.col-md-12 -->
+        </div><!-- /.row -->
+    
+    </div>
+
+</div><!-- /.container-fluid -->
 
 <script>
     function a() {
