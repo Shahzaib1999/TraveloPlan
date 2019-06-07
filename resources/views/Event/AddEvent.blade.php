@@ -2,10 +2,11 @@
 @section('content')
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <style>
+
+  input[type='text'],
   input[type='password'],
   input[type='email'],
-  input[type='text'],
-  input[type='number'] {
+  input[type='number']{
     background-color: #EFEFEF;
     padding: 20px;
     color: #6F6F6F;
@@ -70,7 +71,7 @@
 
             <div class="form-group mt-4">
               <label for="title"> Title</label>
-              <input class="form-control" type="text" required name="title" required>
+              <input class="form-control" type="text" name="title" required>
             </div>
 
             <div class="form-group mt-4">
@@ -80,7 +81,7 @@
 
             <div class="form-group mt-4">
               <label for="city">Cities</label>
-              <input type="text" name="city" class="form-control" id="city" required></textarea>
+              <input type="text" name="city" class="form-control" id="city" required />
             </div>
 
             <div class="form-group mt-4">

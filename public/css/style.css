@@ -187,37 +187,6 @@ font-size: 14px;
 padding-top: 20px;
 }
 
-#wrapper label {
-font-family: 'Montserrat', sans-serif;
-color: #fff;
-font-size: 14px;
-}
-
-#wrapper input[type="text"],#wrapper input[type="email"], #wrapper input[type="password"] {
-width: 89%;
-color: #fff;
-font-family: 'Open Sans', sans-serif;
-font-weight: 300;
-margin: 10px 0 20px;
-font-size: 16px;
-letter-spacing: 1px;
-padding: 10px 5px 10px 40px;
-border: 1px solid rgba(255, 255, 255, 0.18);
-background: transparent;
-outline: none;
-}
-
-#wrapper input[type="text"] {
-background: url("../images/mail.png") no-repeat 13px 13px;
-}
-
-#wrapper input[type="email"] {
-background: url("../images/mail.png") no-repeat 13px 13px;
-}
-
-#wrapper input[type="password"] {
-background: url("../images/password.png") no-repeat 13px 13px;
-}
 
 p.change_link {
 font-family: 'Montserrat', sans-serif;
@@ -234,6 +203,10 @@ font-size: 17px;
 
 #wrapper p.change_link a:hover {
 color: #E91E63;
+}
+
+#wrapper a:hover {
+    color: #21ab64;
 }
 
 /*--w3layouts--*/
@@ -368,14 +341,6 @@ margin: 0;
 margin-top: 15px;
 }
 
-#wrapper input[type="text"].name {
-background: url("../images/name.png") no-repeat 13px 13px;
-}
-
-#wrapper input[type="text"].phone {
-background: url("../images/phone.png") no-repeat 13px 13px;
-}
-
 .footer {
 text-align: center;
 margin: 50px 20px 20px;
@@ -450,9 +415,7 @@ div#login {
 div#register {
     padding: 28px;
 }
-#wrapper input[type="text"],#wrapper input[type="email"], #wrapper input[type="password"] {
-    width: 90%;
-}
+
 #timg{
     height: 400px;
 }
@@ -486,29 +449,7 @@ div#register {
 #wrapper h2 {
     margin-bottom: 20px;
 }
-#wrapper label {
-    font-size: 13px;
-}
-#wrapper input[type="text"],#wrapper input[type="email"], #wrapper input[type="password"] {
-    width: 89%;
-    margin: 5px 0 10px;
-    padding: 8px 5px 8px 40px;
-}
-#wrapper input[type="text"].name {
-    background: url("../images/name.png") no-repeat 13px 10px;
-}
-#wrapper input[type="text"].phone {
-    background: url("../images/phone.png") no-repeat 13px 10px;
-}
-#wrapper input[type="text"] {
-    background: url("../images/mail.png") no-repeat 13px 10px;
-}
-#wrapper input[type="email"] {
-    background: url("../images/mail.png") no-repeat 13px 10px;
-}
-#wrapper input[type="password"] {
-    background: url("../images/password.png") no-repeat 13px 10px;
-}
+
 }
 
 @media screen and (max-width: 966px) {
@@ -637,9 +578,6 @@ h1 {
 div#register {
     padding: 30px;
 }
-#wrapper input[type="text"],#wrapper input[type="email"], #wrapper input[type="password"] {
-    width: 85%;
-}
 #register p.change_link {
     line-height: 25px;
 }
@@ -698,9 +636,6 @@ li.fb.w3ls {
 }
 #register p.change_link {
     margin-top: 70px;
-}
-#wrapper input[type="text"],#wrapper input[type="email"], #wrapper input[type="password"] {
-    width: 82%;
 }
 .send-button a {
     width: 100%;
@@ -764,10 +699,14 @@ input[type='text']{
     src: url("fonts/Lato-Heavy.eot");
 }
 
-.navbar {
-    font-family: "Lato";
-    font-weight: bold
-} */
+ */
+
+/* global */
+.btn-green{
+    background: #21ab64;
+    color: #fff;
+}
+
 
 /* wrapper */
 #sidebar-wrapper {
@@ -921,6 +860,13 @@ input[type='text']{
     cursor: pointer;
 }
 
+/* Event Info */    
+.containera {
+    position: relative;
+    text-align: center;
+    color: white;
+    position: relative;
+}
 
 .img {
     width: 100%;

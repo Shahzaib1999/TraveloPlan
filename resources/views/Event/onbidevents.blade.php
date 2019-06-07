@@ -75,7 +75,7 @@
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
     
-                            <button type="submit" id="btn-card3"><i class="fas fa-trash-alt"></i>Delete</button>
+                            <button type="submit" id="btn-card3"><i class="fas fa-trash-alt"></i> Delete</button>
                             </form>
                         @endif
                         @if(Auth::user()->role == 'Agency')

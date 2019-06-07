@@ -88,9 +88,17 @@
                                         </td>
                                         <td class="text-center">
                                             @if($item->block == false)
-                                            <button class="btn btn-danger">Block</button>
+                                                <form action="/home/block/{{$item->id}}" method="POST">
+                                                    {{ method_field('PUT') }}
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" class="btn btn-danger">Block</button>
+                                                </form>
                                             @else
-                                            <button class="btn btn-success">UnBlock</button>
+                                            <form action="/home/unblock/{{$item->id}}" method="POST">
+                                                {{ method_field('PUT') }}
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-green">UnBlock</button>
+                                            </form>
                                             @endif
             
                                         </td>
@@ -152,9 +160,17 @@
                                         </td>
                                         <td class="text-center">
                                             @if($item->block == false)
-                                            <button class="btn btn-danger">Block</button>
+                                                <form action="/home/block/{{$item->id}}" method="POST">
+                                                    {{ method_field('PUT') }}
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" class="btn btn-danger">Block</button>
+                                                </form>
                                             @else
-                                            <button class="btn btn-success">UnBlock</button>
+                                                <form action="/home/unblock/{{$item->id}}" method="POST">
+                                                    {{ method_field('PUT') }}
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" class="btn btn-green">UnBlock</button>
+                                                </form>
                                             @endif
             
                                         </td>

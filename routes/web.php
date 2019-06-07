@@ -36,13 +36,17 @@ Route::get('/', function () {
 //     }
 // });
 
-
 // Events routes
 Route::resource('/home','HomeController');
+
+// Admin routes
+Route::put('/home/block/{id}','HomeController@block');
+Route::put('/home/unblock/{id}','HomeController@unblock');
 
 Route::resource('/Event','EventController');
 
 Route::get('/EventInfo/{id}','EventController@eventInfo');
+
 
 //Route::get('/Event/{id}','EventController@edit');
 
