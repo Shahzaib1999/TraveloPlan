@@ -2,7 +2,16 @@
 
 @section('content')
 
-<div class="">
+<style>
+#inclusions ul {
+  list-style: none;
+}
+
+#inclusions ul li:before {
+  content: '✓  ';
+}
+</style>
+<div>
     
     <div class="containera">
         <img src="{{URL::asset('/images/detail.jpg')}}" class="img-fluid" width="100%" style="height: 350px;" alt="cover">
@@ -72,9 +81,10 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span c*lass="sr-only"></span>
                     </a>
-                </div>
 
-            </div>
+                </div><!-- /.col-md-8 -->
+
+            </div><!-- /.row -->
             <input hidden type="text" value="{{ $data['a']->end_Time }}" id="timing">
             <div class="col-md-4">
                 @if(Auth::user()->role == 'Users')
@@ -85,9 +95,11 @@
                     </div>
 
                     <div class="card mt-3" style="height: 460px;">
+
                         <div class="card-header text-center">
                             <h2>Bids</h2>
                         </div>
+                        
                         <div class="card-body" style="overflow:scroll">
                             @foreach ($data['bids'] as $item)
                             @if($item->id == $data['a']->id )
@@ -103,27 +115,29 @@
 
 
                         </div>
-                        <form action="/bid" method="POST" id="bid_value">
-                            {{csrf_field()}}
-                            <div class="card-footer text-muted">
-                                <div class="row">
-                                    <div class="col-md-9">
-                                        <input type="hidden" name="event_id" value="{{ $data['a']->id }}" class="form-control">
-                                        <input type="text" name="bid_price" id="msg" class="form-control" style="background: #fff">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="submit" name="messages" class="form-control" >
-                                            <i class="fas fa-paper-plane" style="color: #21ab64"></i>
-                                        </button>
-                                    </div>
+
+                        <div class="card-footer text-muted">
+                            <div class="row">
+                                <div class="col-md-9">
+                                        <form action="/bid" method="POST" id="bid_value">
+                                            {{csrf_field()}}
+                                            <input type="hidden" name="event_id" value="{{ $data['a']->id }}" class="form-control">
+                                            <input type="text" name="bid_price" id="bid_price" onkeypress="return noEnter()" class="form-control" style="background: #fff">
+                                        </form>
+                                </div>
+                                <div class="col-md-3" id="bid_value1">
+                                    <button name="messages" class="form-control" onclick="onSubmit()">
+                                        <i class="fas fa-paper-plane" style="color: #21ab64"></i>
+                                    </button>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                @endif
-            </div>
+                        </div>
 
-        </div>
+                    </div><!-- /.card -->
+                @endif
+            </div><!-- /.col-md-4 -->
+
+        </div><!-- /.container -->
 
         <div class="mt-5">
             <div>
@@ -139,6 +153,19 @@
                 <div id="detail" class="mt-2">
                     
                 </div>
+            </div>
+            
+            <div id="inclusions">
+                <span id="city-heading">Inclusions</span>
+                <ul class="mt-2" >
+                    <li id="inclusions-item">Visa</li>
+                    <li id="inclusions-item">transfer</li>
+                    <li id="inclusions-item">breakfast</li>
+                    <li id="inclusions-item">city tour</li>
+                    <li id="inclusions-item">cab facilities</li>
+                    <li id="inclusions-item">internet</li>
+                    <li id="inclusions-item">amusement park</li>
+                </ul>
             </div>
         </div>
 
@@ -164,21 +191,24 @@
 
 
 <script>
+
     (function(){
         document.getElementById('detail').innerHTML = document.getElementById('hide').value;
     })();
+
+    function noEnter() {
+        if (window.event.keyCode == 13 ) return false;
+    }
     
     var time = document.getElementById('timing').value;
 
     var card_title = document.getElementsByClassName("card-title");
     let max_price = document.getElementById("max_price").value;
-    // var time = t.replace("T"," ");
-    // console.log(t.replace("T"," "));
 
     // Set the date we're counting down to
     var countDownDate = new Date(time).getTime();
 
-    // Update the count down every 1 second
+    // Update's the count down every 1 second
     var x = setInterval(function () {
 
         // Get today's date and time
@@ -197,17 +227,17 @@
         document.getElementById("time").innerHTML = days + "d " + hours + "h "
             + minutes + "m " + seconds + "s ";
 
-        // If the count down is finished, write some text 
+        // If the count down is finished
         if (distance < 0) {
             clearInterval(x);
             document.getElementById("time").innerHTML = "Biding Finished";
             document.getElementById("bid_value").hidden = true;
+            document.getElementById("bid_value1").hidden = true;
 
             if(document.getElementById('status').value == 0 && card_title.length){
 
                 for(let i = 0; i < card_title.length; i++) {
                     let element = card_title[i].innerHTML;
-                    // console.log(element.slice(4,element.length))
                     
                     if (max_price > parseInt(element.slice(4,element.length))) {
 
@@ -215,16 +245,58 @@
                         var card_id = document.getElementsByClassName("card-id")[i].innerHTML;
                         document.getElementById("final_price").value = max_price;
                         document.getElementById("agency_id").value = card_id;
-                        // console.log(card_id,"id");
-                        
-                        console.log(max_price,"ddddddddddddddddddddd");
-                        
+                                                
                     }
                 }
                 document.getElementById('update').submit();
             }
         }
     }, 1000);
+    
+    function onSubmit() {
+        var a = document.getElementsByClassName('card-title');
+        var bidPrice = parseInt(document.getElementById('bid_price').value);
+        var minPrice = document.getElementById('price').innerHTML;
+        var min = parseInt(minPrice.slice(4,minPrice.length));
+        var max = parseInt(document.getElementById("max_price").value);
+        
+        if (a.length) {
+        let max = parseInt(a[0].innerHTML.slice(3,a[0].innerHTML.length));
+            for (let i = 0; i < a.length; i++) {
+                if (max > parseInt(a[i].innerHTML.slice(3,a[i].innerHTML.length))) {
+                    max = parseInt(a[i].innerHTML.slice(3,a[i].innerHTML.length))
+                }
+            }
+
+            if(bidPrice < min){
+                swal("Your price are below from the minimum price!", "Please increase your bidding ammount", "warning");
+            }
+            else if(bidPrice > max){
+                swal("Your price are too high!", "Max Price is " +  max, "warning");
+            }
+            else{
+                if (bidPrice < max) {
+                    document.getElementById('bid_value').submit();
+                }
+                else{
+                    swal("Your price are too high!", "Please decrease your bidding ammount", "warning");
+                }
+            }
+        }
+        else{
+            if(bidPrice <= min){
+                swal("Your price are below from the minimum price!", "Please increase your bidding ammount", "warning");
+            }
+            else if(bidPrice >= max){
+                swal("Your price are too high!", "Max Price is " +  max, "warning");
+            }
+            else{
+                document.getElementById('bid_value').submit();
+            }
+        }
+        
+    }
+
     
     
 

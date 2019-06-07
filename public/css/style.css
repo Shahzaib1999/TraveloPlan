@@ -951,6 +951,11 @@ input[type='text']{
     font-weight: 700
 }
 
+#inclusions-item{
+    color: #343a40;
+    font-size: 17px
+}
+
 #detail{
     padding: 15px
 }
