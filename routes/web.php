@@ -18,6 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/contact', function () {
+    return view('Contact');
+});
+
+Route::get('/aboutus', function () {
+    return view('About');
+});
+
 // // Authentication Routes
 // Route::get('/home',function(){
 //     if (!Auth::user()) {

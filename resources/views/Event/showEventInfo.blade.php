@@ -88,7 +88,7 @@
             <input hidden type="text" value="{{ $data['a']->end_Time }}" id="timing">
             <div class="col-md-4">
                 @if(Auth::user()->role == 'Users')
-                    <button class="btn btn-primary btn-block">Book Now</button>
+                    <button class="btn btn-primary btn-block" onClick="document.location.href='/userEvent/create/{{ $data['a']->id }}'">Book Now</button>
                 @else
                     <div id="timer">
                         <p class="text-center" id="time"></p>
@@ -199,7 +199,7 @@
     function noEnter() {
         if (window.event.keyCode == 13 ) return false;
     }
-    
+        
     var time = document.getElementById('timing').value;
 
     var card_title = document.getElementsByClassName("card-title");

@@ -46,7 +46,7 @@
         <div class="row">
             @foreach ($d as $item)
 
-            @if((Auth::user()->role == 'Users' && !$item->status == 0) || ((Auth::user()->role == 'Agency' || Auth::user()->role == 'Admin') && $item->status == 0))
+            @if((Auth::user()->role == 'Users' && !$item->status == 0) || (Auth::user()->role == 'Admin' || Auth::user()->role == 'Agency'))
             
                 <div id="card" class="col-lg-4 col-md-6">
                     <div>
@@ -82,8 +82,7 @@
                             <button id="btn-card2" style="width: 100%" onClick="document.location.href='/EventInfo/{{ $item->id }}'"><i class="fas fa-info-circle"></i> Info</button>
                         @endif 
                         @if(Auth::user()->role == 'Users')
-                            <a href="/userEvent/create/{{ $item->id }}" class="btn btn-primay">going event</a>
-                            <button id="btn-card"><i class="fas fa-location-arrow" onClick="document.location.href='/userEvent'"></i> Going</button>
+                            <button id="btn-card" onClick="document.location.href='/userEvent/create/{{ $item->id }}'"><i class="fas fa-location-arrow"></i> Going</button>
                             <button id="btn-card2" onClick="document.location.href='/EventInfo/{{ $item->id }}'"><i class="fas fa-info-circle"></i> Info</button>
                         @endif 
                     </div>

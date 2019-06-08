@@ -37,8 +37,8 @@ class HomeController extends Controller
             return view('Adminhome')->with('d',['agency'=>$agency,'user'=>$user]);;
         }
         else if(Auth::user()->role == 'Users'){
-            $data = user_events::all()->where('user_id','=',Auth::user()->id);
-            return view('Userhome')->with('d',$data);
+            // $data = user_events::all()->where('user_id','=',Auth::user()->id);
+            return redirect('Event');
         }
         else if(Auth::user()->role == 'Agency'){
             return view('Agencyhome');

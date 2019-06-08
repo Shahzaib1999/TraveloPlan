@@ -39,19 +39,20 @@
             height: 50px;
             color: #fff;
             border-bottom: 1px solid #21a46b;
-
         }
 
         .top-left {
-            padding-bottom: 2.4%
+            /* padding-bottom: 3.5% */
         }
 
         .top-login {
-            padding-bottom: 19%
+            /* padding-bottom: 19% */
+            /* top: 50% */
+            padding-top: 7%
         }
 
         .top-right {
-            padding-bottom: 50%
+            /* padding-bottom: 50% */
         }
 
         .anchor {
@@ -127,7 +128,7 @@
                                 @if (Auth::guest())
                                 <div class="top-login">
                                     <li class="nav-item"><a class="anchor" href="{{ route('login') }}">Login</a> /
-                                        <a class="anchor" href="{{ route('register') }}">Register</a>
+                                    <a class="anchor" href="{{ route('register') }}">Register</a>
                                 </div>
                                 @else
                                 <li class="nav-item top-right" id="name">
@@ -172,14 +173,27 @@
                         <ul class="navbar-nav ml-md-auto">
                             <!-- Authentication Links -->
                             @if (Auth::guest())
-                            <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/aboutus">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contact">Contact</a>
+                            </li>
                             @else
                             <li class="nav-item active">
                                 <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
+                                <a class="nav-link" href="/aboutus">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contact">Contact</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -270,14 +284,27 @@
                         <ul class="navbar-nav ml-md-auto">
                             <!-- Authentication Links -->
                             @if (Auth::guest())
-                            <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/aboutus">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contact">Contact</a>
+                            </li>
                             @else
                             <li class="nav-item active">
                                 <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
+                                <a class="nav-link" href="/aboutus">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contact">Contact</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
