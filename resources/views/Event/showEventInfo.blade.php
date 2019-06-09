@@ -10,9 +10,10 @@
 #inclusions ul li:before {
   content: '✓  ';
 }
+
 </style>
 <div>
-    
+
     <div class="containera">
         <img src="{{URL::asset('/images/detail.jpg')}}" class="img-fluid" width="100%" style="height: 350px;" alt="cover">
         <div class="img"></div>
@@ -32,7 +33,10 @@
                     <div class="col-md-4"><span id="country"><?php echo str_replace(" ",",",$data['a']->cities) ?></span></div>
                     <div class="col-md-4"></div>
                     <div class="col-md-4 text-right">
-                        @if(Auth::user()->role == 'Users')
+                        @if(Auth::guest())
+                            <span style="color:#6f6f6f">Price</span><br />
+                            <span id="price">PKR {{ $data['a']->price }}</span>
+                        @elseif(Auth::user()->role == 'Users')
                             <span style="color:#6f6f6f">Price</span><br />
                             <span id="price">PKR {{ $data['a']->price }}</span>
                         @else
@@ -87,7 +91,9 @@
             </div><!-- /.row -->
             <input hidden type="text" value="{{ $data['a']->end_Time }}" id="timing">
             <div class="col-md-4">
-                @if(Auth::user()->role == 'Users')
+                @if(Auth::guest())
+                    <button class="btn btn-primary btn-block" onClick="document.location.href='/userEvent/create/{{ $data['a']->id }}'">Book Now</button>
+                @elseif(Auth::user()->role == 'Users')
                     <button class="btn btn-primary btn-block" onClick="document.location.href='/userEvent/create/{{ $data['a']->id }}'">Book Now</button>
                 @else
                     <div id="timer">
@@ -105,14 +111,13 @@
                             @if($item->id == $data['a']->id )
                             
                             <div id="bid">
-                                    <span class="card-title">Rs: {{$item->bid_price}}</span>
-                                    <p class="card-text">Agency name: {{$item->name}}</p>
-                                    <p class="card-id" hidden>{{$item->uid}}</p>
-                                </div>
+                                <span class="card-title">Rs: {{$item->bid_price}}</span>
+                                <p class="card-text">Agency name: {{$item->name}}</p>
+                                <p class="card-id" hidden>{{$item->uid}}</p>
+                            </div>
                                 
                                 @endif
                                 @endforeach
-
 
                         </div>
 

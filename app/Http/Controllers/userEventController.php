@@ -29,10 +29,14 @@ class userEventController extends Controller
      */
     public function create($id)
     {
-        //echo "id found".$id;
-         $data=events::find($id);
-        
-         return view('userEvent/addUserEvent')->with('data',$data);
+
+        if(Auth::guest()){
+            return redirect('/register');
+        }
+        else{
+            $data=events::find($id);
+            return view('userEvent/addUserEvent')->with('data',$data);
+        }
         
     }
 

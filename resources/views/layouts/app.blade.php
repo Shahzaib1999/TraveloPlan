@@ -35,6 +35,24 @@
             font-size: 15px;
         }
 
+        .navbar-brand{
+            font-size: 25px
+        }
+
+        #nav>li>a{
+            border-radius: 0;
+            color: #000;
+            font-size: 18px;
+            padding: 20px 12px;
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        #nav>li>a:hover{
+            color: #21ab64
+        }
+
         .top-bar {
             height: 50px;
             color: #fff;
@@ -170,14 +188,11 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-md-auto">
+                        <ul class="navbar-nav ml-md-auto" id="nav">
                             <!-- Authentication Links -->
                             @if (Auth::guest())
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">Register</a>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/Event">Tours<span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/aboutus">About</a>
@@ -187,7 +202,7 @@
                             </li>
                             @else
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="/Event">Tours<span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/aboutus">About</a>
@@ -281,14 +296,11 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-md-auto">
+                        <ul class="navbar-nav ml-md-auto" id="nav">
                             <!-- Authentication Links -->
                             @if (Auth::guest())
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">Register</a>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/Event">Tours<span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/aboutus">About</a>
@@ -298,7 +310,7 @@
                             </li>
                             @else
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="/Event">Tours<span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/aboutus">About</a>

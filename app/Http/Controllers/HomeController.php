@@ -41,7 +41,7 @@ class HomeController extends Controller
             return redirect('Event');
         }
         else if(Auth::user()->role == 'Agency'){
-            return view('Agencyhome');
+            return redirect('Event');
         }
         else{
             return redirect('login');

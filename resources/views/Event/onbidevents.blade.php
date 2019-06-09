@@ -12,14 +12,14 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" height="600"
+                <img class="d-block w-100" height="500"
                     src="https://tr-images.condecdn.net/image/5K4zKqvQBrX/crop/2040/f/joali-maldives-dec18-pr13.jpg">
                 <div class="carousel-caption d-none d-md-block">
                     <h1>Maldives</h1>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" height="600" src="http://www.hi.tours/images/banner-nepal.jpg"
+                <img class="d-block w-100" height="500" src="http://www.hi.tours/images/banner-nepal.jpg"
                     alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h1>Nepal</h1>
@@ -46,7 +46,41 @@
         <div class="row">
             @foreach ($d as $item)
 
-            @if((Auth::user()->role == 'Users' && !$item->status == 0) || (Auth::user()->role == 'Admin' || Auth::user()->role == 'Agency'))
+            @if (Auth::guest())
+
+            @if ($item->status == 1)
+                
+                    <div id="card" class="col-lg-4 col-md-6">
+                        <div>
+                        <?php 
+                                $a = json_decode($item->image);
+                                ?>
+                            <img src="data:image/png;base64, <?php echo $a[0] ?>" width="100%" height="260">
+                            <div class="tr-price">
+                                <span>{{ $item->max_price }} USD</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p id="card-heading">{{ $item->title }}</p>
+                            <p id="card-sub-heading">{{ $item->description }}</p>
+                        </div>
+                        <div style="width:350px; margin-top:50px; border-top: 1px solid; color: rgba(0,0,0,.1); margin: 25px auto"
+                        align="center"></div>
+                        <div>
+                            <p id="card-text">Cities: <?php $city = str_replace(" ",",",$item->cities); echo $city?></p>
+                        </div>
+                        <div class="row" id="btn-main">
+                            <button id="btn-card" onClick="document.location.href='/userEvent/create/{{ $item->id }}'"><i class="fas fa-location-arrow"></i> Going</button>
+                            <button id="btn-card2" onClick="document.location.href='/EventInfo/{{ $item->id }}'"><i class="fas fa-info-circle"></i> Info</button>
+                        </div>
+                    </div>
+                @else
+                    <div style="margin: 0 auto">
+                        <h1>No travel pakages available</h1>
+                    </div>
+                @endif
+
+            @elseif((Auth::user()->role == 'Users' && !$item->status == 0) || (Auth::user()->role == 'Admin' || Auth::user()->role == 'Agency'))
             
                 <div id="card" class="col-lg-4 col-md-6">
                     <div>
