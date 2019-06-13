@@ -33,7 +33,7 @@
             color: #fff
         }
     
-        input[type='password'],input[type='email'],input[type='text']{
+        input[type='password'],input[type='email'],input[type='text'],input[type='number']{
             background-color: #EFEFEF;
             padding: 20px;
             color: #6F6F6F;
@@ -78,7 +78,7 @@
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label for="name" class="control-label">Name</label>
                 
-                                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="name" required autofocus>
+                                                <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="name" required autofocus>
                 
                                                 @if ($errors->has('name'))
                                                     <span class="help-block">
@@ -134,7 +134,7 @@
                                         <div class="form-group  mt-3{{ $errors->has('contact') ? ' has-error' : '' }}">
                                             <label for="contact" class="control-label">Contact Number</label>
                 
-                                                <input type="text" id="contact" name="contact" class="form-control" placeholder="03xx-xxxxxxx" required>
+                                                <input type="number" id="contact" name="contact" class="form-control" placeholder="03xx-xxxxxxx" required>
                                                 @if ($errors->has('contact'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('contact') }}</strong>
@@ -172,13 +172,19 @@
             
                                 <form class="mt-4" method="POST" action="{{ route('login') }}" id="color">
                                     {{ csrf_field() }}
-                                    <div  class="form-group">
+                                    <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
                                         <label for="exampleInputEmail1">Email</label>
-                                        <input type="email" class="form-control" Name="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+                                        <input type="email" class="form-control" Name="email" placeholder="Enter email" required>
+
+                                        @if ($errors->has('email'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="form-group mt-4">
                                         <label for="password">Password</label>
-                                        <input type="password" class="form-control" Name="password" aria-describedby="emailHelp" placeholder="Enter password" required>
+                                        <input type="password" class="form-control" Name="password" placeholder="Enter password" required>
                                     </div>
                                     <button type="submit" class="btn mt-5" id="submit">Log In</button>
                                 </form>

@@ -688,8 +688,9 @@ li.fb.w3ls {
 }
 }
 
-input[type='text']{
+input[type='text'],input[type='number']{
     background-color: #EFEFEF;
+    color: #000
 }
 
 /*--- Responsive Code ---*/

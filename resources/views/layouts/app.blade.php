@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>TraveloPLan</title>
 
 
 
@@ -86,6 +86,10 @@
             display: none;
         }
 
+        #user{
+            display: none
+        }
+
         @media(max-width:853px) {
             .top-left {
                 display: none;
@@ -105,7 +109,11 @@
             }
 
             #username {
-                display: none
+                display: none;
+            }
+
+            #user{
+                display: block;
             }
         }
 
@@ -210,7 +218,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/contact">Contact</a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown" id="user">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -318,7 +326,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/contact">Contact</a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown" id="user">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>

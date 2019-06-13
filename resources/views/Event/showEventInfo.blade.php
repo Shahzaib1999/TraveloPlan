@@ -19,6 +19,7 @@
         <div class="img"></div>
         <div class="centered">
             <h1 id="cover-heading">Booking Details</h1>
+            <p id="uname" hidden>{{Auth::user()->id}}</p>
         </div>
     </div>
 
@@ -127,7 +128,7 @@
                                         <form action="/bid" method="POST" id="bid_value">
                                             {{csrf_field()}}
                                             <input type="hidden" name="event_id" value="{{ $data['a']->id }}" class="form-control">
-                                            <input type="text" name="bid_price" id="bid_price" onkeypress="return noEnter()" class="form-control" style="background: #fff">
+                                            <input type="number" name="bid_price" id="bid_price" onkeypress="return noEnter()" class="form-control" style="background: #fff" required>
                                         </form>
                                 </div>
                                 <div class="col-md-3" id="bid_value1">
@@ -264,40 +265,53 @@
         var minPrice = document.getElementById('price').innerHTML;
         var min = parseInt(minPrice.slice(4,minPrice.length));
         var max = parseInt(document.getElementById("max_price").value);
-        
-        if (a.length) {
-        let max = parseInt(a[0].innerHTML.slice(3,a[0].innerHTML.length));
-            for (let i = 0; i < a.length; i++) {
-                if (max > parseInt(a[i].innerHTML.slice(3,a[i].innerHTML.length))) {
-                    max = parseInt(a[i].innerHTML.slice(3,a[i].innerHTML.length))
+        var ids = document.getElementsByClassName('card-id');
+        var uname = document.getElementById('uname').innerHTML;
+    debugger    
+        if (!bidPrice) {
+            swal("Field empty","Please enter a value","warning");
+        } else {
+    
+            if (a.length) {
+            let max = parseInt(a[0].innerHTML.slice(3,a[0].innerHTML.length));
+                for (let i = 0; i < a.length; i++) {
+                    if (max > parseInt(a[i].innerHTML.slice(3,a[i].innerHTML.length))) {
+                        max = parseInt(a[i].innerHTML.slice(3,a[i].innerHTML.length))
+                    }
                 }
-            }
 
-            if(bidPrice < min){
-                swal("Your price are below from the minimum price!", "Please increase your bidding ammount", "warning");
-            }
-            else if(bidPrice > max){
-                swal("Your price are too high!", "Max Price is " +  max, "warning");
-            }
-            else{
-                if (bidPrice < max) {
-                    document.getElementById('bid_value').submit();
+                if(bidPrice < min){
+                    swal("Your price are below from the minimum price!", "Please increase your bidding ammount", "warning");
+                }
+                else if(bidPrice > max){
+                    swal("Your price are too high!", "Max Price is " +  max, "warning");
                 }
                 else{
-                    swal("Your price are too high!", "Please decrease your bidding ammount", "warning");
+                    if (bidPrice < max) {
+                        debugger
+                        if (ids[0].innerHTML == uname) {
+                            swal("Your bid is already on top","","warning");
+                        } else {
+                            document.getElementById('bid_value').submit();
+                        }
+                    }
+                    else{
+                        swal("Your price are too high!", "Please decrease your bidding ammount", "warning");
+                    }
                 }
             }
-        }
-        else{
-            if(bidPrice <= min){
-                swal("Your price are below from the minimum price!", "Please increase your bidding ammount", "warning");
-            }
-            else if(bidPrice >= max){
-                swal("Your price are too high!", "Max Price is " +  max, "warning");
-            }
             else{
-                document.getElementById('bid_value').submit();
+                if(bidPrice <= min){
+                    swal("Your price are below from the minimum price!", "Please increase your bidding ammount", "warning");
+                }
+                else if(bidPrice >= max){
+                    swal("Your price are too high!", "Max Price is " +  max, "warning");
+                }
+                else{
+                    document.getElementById('bid_value').submit();
+                }
             }
+        
         }
         
     }
