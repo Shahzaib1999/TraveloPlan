@@ -46,7 +46,8 @@
 
                         <div class="form-group mt-4">
                             <label for="title">Total Price</label>
-                            <input class="form-control" type="number" name="totalPrice" id="tt" disabled>
+                            <input class="form-control" type="number" id="tt" disabled>
+                            <input class="form-control" type="number" name="totalPrice" id="t" hidden>
                         </div>
 
                         <button type="submit" class="btn btn-green mt-5" >Add Event</button>
@@ -86,6 +87,7 @@ function add(){
             var nop = $("#numberOfPackages").val();
             var tp = parseInt($("#totalPrice").val(), 10);
             var t = nop * tp;
+            $('#t').val(t);
             $('#tt').val(t);
 
         });

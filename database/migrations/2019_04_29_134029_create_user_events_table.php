@@ -19,7 +19,6 @@ class CreateUserEventsTable extends Migration
             $table->string('user_name');
             $table->string('email');
             $table->string('contact_number');
-            $table->string('cnic');
             $table->integer('number_of_packages');
             $table->integer('total_price');
             $table->timestamps();

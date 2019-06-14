@@ -104,8 +104,8 @@
 
                     <div class="card mt-3" style="height: 460px;">
 
-                        <div class="card-header text-center">
-                            <h2>Bids</h2>
+                        <div class="card-header text-center" id="bg-green" style="font-size: 30px">
+                            Bids
                         </div>
                         
                         <div class="card-body" style="overflow:scroll">
@@ -123,6 +123,7 @@
 
                         </div>
 
+                        @if(Auth::user()->role == 'Agency')
                         <div class="card-footer text-muted">
                             <div class="row">
                                 <div class="col-md-9">
@@ -139,6 +140,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
 
                     </div><!-- /.card -->
                 @endif

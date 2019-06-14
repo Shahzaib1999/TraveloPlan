@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('role');
+            $table->boolean('block')->default(false);
             $table->string('agency_address')->nullable();
             $table->integer('contact');
             $table->rememberToken();

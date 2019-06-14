@@ -52,7 +52,6 @@ class userEventController extends Controller
         $uname = $request->userName;
         $uemail = $request->email;
         $ucn = $request->contactNumber;
-        $uc = "";
         $unop = $request->numberOfPackages;
         $utp = $request->totalPrice;
 
@@ -62,13 +61,12 @@ class userEventController extends Controller
             $obj->user_name=$uname;
             $obj->email=$uemail;
             $obj->contact_number=$ucn;
-            $obj->cnic=$uc;
             $obj->number_of_packages=$unop;
             $obj->total_price=$utp;
 
             $obj->save();
 
-            return view('Userhome');
+            return redirect('Event');
             
         }
 

@@ -48,7 +48,7 @@
 
             @if (Auth::guest())
 
-            @if ($item->status == 1)
+                @if ($item->status == 1)
                 
                     <div id="card" class="col-lg-4 col-md-6">
                         <div>
