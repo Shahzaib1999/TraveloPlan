@@ -129,7 +129,7 @@
               <input type="file" name="filename[]" class="form-control" multiple required>
             </div>
             <input type="text" id="ab" name="detail_desc" hidden>
-            <button type="submit" class="btn mt-5" style="background:#0e8e4c;color:#fff">Add Event</button>
+            <button type="submit" class="btn btn-green mt-5">Add Event</button>
 
 
           </form>

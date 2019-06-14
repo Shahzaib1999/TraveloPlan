@@ -19,7 +19,6 @@
         <div class="img"></div>
         <div class="centered">
             <h1 id="cover-heading">Booking Details</h1>
-            <p id="uname" hidden>{{Auth::user()->id}}</p>
         </div>
     </div>
 
@@ -40,9 +39,11 @@
                         @elseif(Auth::user()->role == 'Users')
                             <span style="color:#6f6f6f">Price</span><br />
                             <span id="price">PKR {{ $data['a']->price }}</span>
+                            <p id="uname" hidden>{{Auth::user()->id}}</p>
                         @else
                             <span style="color:#6f6f6f">Starting From</span><br />
                             <span id="price">PKR {{ $data['a']->minimum_price }}</span>
+                            <p id="uname" hidden>{{Auth::user()->id}}</p>
                         @endif
                     </div>
                 </div>

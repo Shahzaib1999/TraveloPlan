@@ -31,7 +31,7 @@ class userEventController extends Controller
     {
 
         if(Auth::guest()){
-            return redirect('/register');
+            return redirect('/login');
         }
         else{
             $data=events::find($id);
@@ -48,11 +48,11 @@ class userEventController extends Controller
      */
     public function store(Request $request)
     {
-        $uid = $request->userId;
+        $uid = Auth::user()->id;
         $uname = $request->userName;
         $uemail = $request->email;
         $ucn = $request->contactNumber;
-        $uc = $request->cnic;
+        $uc = "";
         $unop = $request->numberOfPackages;
         $utp = $request->totalPrice;
 

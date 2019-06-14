@@ -703,8 +703,12 @@ input[type='text'],input[type='number']{
 
 /* global */
 .btn-green{
-    background: #21ab64;
+    background: #0e8e4c;
     color: #fff;
+}
+
+#bg-green{
+    background: #21ab64;
 }
 
 

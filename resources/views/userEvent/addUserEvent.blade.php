@@ -2,30 +2,66 @@
 
 @section('content')
 
+<div class="container mt-5">
 
+    <div class="row">
 
-<form action="/userEvent" method="post" >
-    {{ csrf_field() }}
+        <div class="col-md-12">
 
-user id<br>
-<input type="text" name="userId" value="{{Auth::user()->id}}"  ><br>
-user_name<br>
-    <input type="text" name="userName" value="{{Auth::user()->name}}" ><br>
-    email<br>
-    <input type="text" name="email" value="{{Auth::user()->email}}" ><br>
-    contact_number<br>
-    <input type="text" name="contactNumber" value="{{Auth::user()->contact}}" ><br>
-    cnic<br>
-    <input type="text" name="cnic" ><br>
-    number_of_packages<br>
-    <input type="number" name="numberOfPackages" id="numberOfPackages" ><br>
-    price<br>
-    <input type="text"  id="totalPrice" value="{{$data->price}} "><br>
-    total_price
-   <input type="number" name="totalPrice" id="tt"><br>
-    <input type="submit" >
-</form>
+            <div class="card">
 
+                <div class="card-header text-center text-white" id="bg-green" style="font-size:30px;font-weight:600">
+                    User Details
+                </div>
+        
+                <div class="card-body">
+
+                    <form action="/userEvent" method="post" >
+                    {{ csrf_field() }}
+
+                        <div class="form-group mt-4" hidden>
+                            <label for="title">Name</label>
+                            <input class="form-control" type="text" name="userName" value="{{Auth::user()->name}}" required>
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <label for="title">Email</label>
+                            <input class="form-control" type="text" name="email" value="{{Auth::user()->email}}" required>
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <label for="title">Phone number</label>
+                            <input class="form-control" type="text" name="contactNumber" value="{{Auth::user()->contact}}" required>
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <label for="title">No. of persons</label>
+                            <input class="form-control" type="number" name="numberOfPackages" id="numberOfPackages" required>
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <label for="title">Price</label>
+                            <input class="form-control" type="text" id="totalPrice" value="{{$data->price}}" disabled>
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <label for="title">Total Price</label>
+                            <input class="form-control" type="number" name="totalPrice" id="tt" disabled>
+                        </div>
+
+                        <button type="submit" class="btn btn-green mt-5" >Add Event</button>
+
+                    </form>
+
+                </div><!-- /.card-body -->
+
+            </div><!-- /.card -->
+
+        </div>
+
+    </div><!-- /.row -->
+
+</div>
 
 {{-- <script>
 
