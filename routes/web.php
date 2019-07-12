@@ -63,9 +63,3 @@ Route::get('/userEvent/create/{id}','userEventController@create');
 Route::resource('/userEvent','userEventController');
 
 Route::resource('/bid','bidingController');
-
-
-
-
-
-

@@ -87,7 +87,7 @@
             <div class="form-group mt-4">
               <label for="Starting_date">Event Starts on</label>
               <input type="date" name="Starting_date" class="form-control" id="startDate" onchange="eventStartValidate()" required>
-              <span hidden class="help-block ml-3">
+              <span hidden class="help-block ml-3 mt-2">
                 <b>Date should be presert or future</b>
               </span>
             </div>
@@ -95,27 +95,30 @@
             <div class="form-group mt-4">
               <label for="End_date">Event End on</label>
               <input type="date" name="End_date" class="form-control" id="endDate" onchange="eventEndValidate()" required>
-              <span hidden class="help-block ml-3">
-                <b>End date should be equall or greater then starting date</b>
+              <span hidden class="help-block ml-3 mt-2">
+                <b>End date should be greater then starting date</b>
               </span>
             </div>
 
             <div class="form-group mt-4">
               <label>Bidding Ends on</label>
               <input type="datetime-local" name="End_Time" class="form-control" id="endBid" onchange="biddingValidate()" required>
-              <span hidden class="help-block ml-3">
-                <b>Date should be equal or less then event starting date</b>
+              <span hidden class="help-block ml-3 mt-2">
+                <b>Date should be equall or greater then today's date and less then event starting date</b>
               </span>
             </div>
 
             <div class="form-group mt-4">
-              <label for="max_price">Min Price</label>
-              <input type="number" name="minimum_price" class="form-control" min="0" required>
+              <label for="min_price">Min Price</label>
+              <input type="number" name="minimum_price" id="min_price" class="form-control" min="0" onchange="minPrice()" required>
             </div>
 
             <div class="form-group mt-4">
               <label for="minimum_price">Max Price</label>
-              <input type="number" name="max_price" class="form-control" min="0" required>
+              <input type="number" name="max_price" id="max_price" class="form-control" min="0" onchange="maxPrice()" required>
+              <span hidden class="help-block ml-3 mt-2">
+                <b>Maximum price should be greater then Minimum price</b>
+              </span>
             </div>
 
             <div class="form-group mt-4">
@@ -144,6 +147,7 @@
 <script type="text/javascript">
 
   function eventStartValidate(){
+    debugger
     var start = document.getElementById('startDate').value;
     var date = new Date();
     var startDate = date.getDate();
@@ -166,6 +170,9 @@
     } else {
       document.getElementsByClassName('help-block')[0].hidden = true;
     }
+
+    eventEndValidate();
+    biddingValidate();
     
   }
 
@@ -173,23 +180,57 @@
     var start = document.getElementById('startDate').value;
     var end = document.getElementById('endDate').value;
 
-    if (start > end) {
+    if (start >= end) {
       document.getElementsByClassName('help-block')[1].hidden = false;
     } else {
       document.getElementsByClassName('help-block')[1].hidden = true;
     }
 
+    eventStartValidate();
+    biddingValidate();
   }
 
   function biddingValidate(){
+    debugger
     var start = document.getElementById('startDate').value;
     var end = document.getElementById('endBid').value;
-    
-    if (start < end.slice(0,10)) {
-      document.getElementsByClassName('help-block')[2].hidden = false;
-    } else {
-      document.getElementsByClassName('help-block')[2].hidden = true;
+    var date = new Date();
+    var startDate = date.getDate();
+    var month = date.getMonth();
+    var year = date.getFullYear();
+    var num = parseInt(month)
+    month = num + 1;
+
+    if (startDate < 10) {
+      startDate = "0" + startDate;
     }
+    if (month < 10) {
+      month = "0" + month;
+    }
+
+    var now = year + '-' + month + '-' + startDate ;
+
+    if ((start > end.slice(0,10)) && now <= end.slice(0,10)) {
+      document.getElementsByClassName('help-block')[2].hidden = true;
+    } else {
+      document.getElementsByClassName('help-block')[2].hidden = false;
+    }
+  }
+
+  function minPrice(){
+    maxPrice()
+  }
+
+  function maxPrice(){
+    var min = document.getElementById('min_price').value;
+    var max = document.getElementById('max_price').value;
+
+    if (min >= max) {
+      document.getElementsByClassName('help-block')[3].hidden = false;
+    } else {
+      document.getElementsByClassName('help-block')[3].hidden = true;
+    }
+
   }
 
   var toolbarOptions = [
