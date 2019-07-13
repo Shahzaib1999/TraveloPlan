@@ -81,30 +81,40 @@ p{
 
     <div class="row">
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card">
-                <img src="https://ru.opensuse.org/images/0/0b/Icon-user.png" alt="Shahzaib" style="width:100%;height: 300px;">
+                <img src="https://ru.opensuse.org/images/0/0b/Icon-user.png" alt="Shahzaib" style="width:100%;height: 250px;">
                 <span class="name">Muhammad Shahzaib</span>
                 <p class="title mt-2">CEO & Founder</p>
-                <p class="mt-2">NUST University</p>
+                <p class="mt-2">XYZ University</p>
             </div>
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card">
-                <img src="https://ru.opensuse.org/images/0/0b/Icon-user.png" alt="zain" style="width:100%;height:300px;">
-                <span class="name">Zayn ul abedin</span>
-                <p class="title mt-2">CEO & Founder</p>
-                <p class="mt-2">NED University</p>
+                <img src="https://ru.opensuse.org/images/0/0b/Icon-user.png" alt="Shahzaib" style="width:100%;height: 250px;">
+                <span class="name">Nadir</span>
+                <p class="title mt-2">Marketing Manager</p>
+                <p class="mt-2">XYZ University</p>
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <img src="https://ru.opensuse.org/images/0/0b/Icon-user.png" alt="zain" style="width:100%;height:250px;">
+                <span class="name">Mamooon</span>
+                <p class="title mt-2">Tour Consultant</p>
+                <p class="mt-2">XYZ University</p>
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card">
-                <img src="https://ru.opensuse.org/images/0/0b/Icon-user.png" alt="Mustafa" style="width:100%;height: 300px;">
-                <span class="name">Mustafa Shehzad</span>
-                <p class="title mt-2">Demanded</p>
+                <img src="https://ru.opensuse.org/images/0/0b/Icon-user.png" alt="Mustafa" style="width:100%;height: 250px;">
+                <span class="name">Sahil</span>
+                <p class="title mt-2">Ticketing Officer</p>
                 <p class="mt-2">XYZ University</p>
             </div>
         </div>

@@ -209,6 +209,11 @@
                                 <a class="nav-link" href="/contact">Contact</a>
                             </li>
                             @else
+                            @if(Auth::user()->role == 'Users' || Auth::user()->role == 'Agency')
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/userEvent/{{Auth::user()->id}}">My Tours<span class="sr-only">(current)</span></a>
+                            </li>
+                            @endif
                             <li class="nav-item active">
                                 <a class="nav-link" href="/Event">Tours<span class="sr-only">(current)</span></a>
                             </li>
@@ -317,6 +322,11 @@
                                 <a class="nav-link" href="/contact">Contact</a>
                             </li>
                             @else
+                            @if(Auth::user()->role == 'Users' || Auth::user()->role == 'Agency')
+                            <li class="nav-item active">
+                            <a class="nav-link" href="/userEvent/{{Auth::user()->id}}">My Tours<span class="sr-only">(current)</span></a>
+                            </li>
+                            @endif
                             <li class="nav-item active">
                                 <a class="nav-link" href="/Event">Tours<span class="sr-only">(current)</span></a>
                             </li>

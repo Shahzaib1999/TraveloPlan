@@ -78,7 +78,9 @@ class userEventController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = user_events::all();
+        
+        return view('MyTours')->with('data',$data);
     }
 
     /**

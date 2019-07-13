@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\events;
 use App\bidings;
+use App\user_events;
 use DB;
 
 class EventController extends Controller
@@ -58,10 +59,7 @@ class EventController extends Controller
     {
         
         if(Auth::user()->role == 'Admin'){
-            // $this->validate($request, [
-            //     'filename' => 'required',
-            //     'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-            // ]);
+    
             $arr = [];
             if($request->hasfile('filename')){
 
@@ -88,17 +86,6 @@ class EventController extends Controller
             $ci = $request->city;
             $m = $request->minimum_price;
         
-            // if($request->hasfile('filename'))
-            // {
-
-            //    foreach($request->file('filename') as $image)
-            //    {
-            //        $name=$image->getClientOriginalName();
-            //        $image->move(public_path().'/images/', $name);  
-            //        $data[] = $name;  
-            //    }
-            // }
-
             $obj=new events();
             $obj->title=$t;
             $obj->description=$d;
@@ -133,21 +120,6 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        // $data=DB::table('bidings')
-        // ->join('users','users.id','=','bidings.agency_id')
-        // ->join('events','events.id','=','bidings.event_id')->where('events.id', '==', '1')
-        // ->select('bidings.agency_id','users.name','bidings.event_id','events.title','bidings.bid_price')
-        // ->get()->sortBy('event_id');
-
-        // $data=DB::table('bidings')
-        // ->join('users','users.id','=','bidings.agency_id')
-        // ->where('bidings.event_id', '=', $id)
-        // ->join('events','events.id','=','bidings.event_id')
-        // ->get();
-        
-
-        // return view('Event/showbids')->with('d',['a'=>$data, 'b'=>$id]); 
-
         echo "show";
         
     }
@@ -174,10 +146,7 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         if(Auth::user()->role == 'Admin'){
-            // $this->validate($request, [
-            //     'filename' => 'required',
-            //     'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-            // ]);
+            
             $arr = [];
             if($request->hasfile('filename')){
 
@@ -204,16 +173,6 @@ class EventController extends Controller
             $ci = $request->city;
             $m = $request->minimum_price;
         
-            // if($request->hasfile('filename'))
-            // {
-
-            //    foreach($request->file('filename') as $image)
-            //    {
-            //        $name=$image->getClientOriginalName();
-            //        $image->move(public_path().'/images/', $name);  
-            //        $data[] = $name;  
-            //    }
-            // }
 
             $obj = events::find($id);
             $obj->title=$t;
@@ -289,10 +248,10 @@ class EventController extends Controller
         ->join('events','events.id','=','bidings.event_id')
         ->select('users.name','users.id as uid','bidings.bid_price','events.id')->get();
 
-
         $data=events::find($id);
-        // echo $data;
+
         return view('Event/showEventInfo')->with('data',['a'=>$data, 'bids'=>$d]);
-        // echo $data;
+        
     }
+
 }

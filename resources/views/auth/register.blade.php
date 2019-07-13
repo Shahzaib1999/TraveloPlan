@@ -134,7 +134,7 @@
                                         <div class="form-group  mt-3{{ $errors->has('contact') ? ' has-error' : '' }}">
                                             <label for="contact" class="control-label">Contact Number</label>
                 
-                                                <input type="number" id="contact" name="contact" class="form-control" placeholder="03xx-xxxxxxx" required>
+                                                <input type="number" id="contact" name="contact" class="form-control" placeholder="03xxxxxxxxx" required>
                                                 @if ($errors->has('contact'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('contact') }}</strong>

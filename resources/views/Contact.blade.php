@@ -23,21 +23,20 @@ p{
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="box">
-                <h2>GET IN TOUCH</h2>
+                <h2 class="font-weight-bold">GET IN TOUCH</h2>
                 <br>
                 <div class="form-group">
                     <input type="text" class="form-control" id="" placeholder="Name">
                 </div>
 
-                <div class="form-group"><br>
-                    <input type="password" class="form-control" id="" placeholder="Email Id">
+                <div class="form-group mt-4"><br>
+                    <input type="text" class="form-control" id="" placeholder="Email Id">
                 </div>
 
-                <div class="form-group">
-                    <label for=""></label>
-                    <textarea class="form-control" name="" id="" rows="4" placeholder="Comment"></textarea>
+                <div class="form-group mt-4">
+                    <textarea class="form-control" name="" id="" rows="4" placeholder="Comments"></textarea>
                 </div>
-                <button type="button" class="btn btn-success btn-block">SUBMIT</button><br>
+                <button type="button" class="btn btn-success btn-block mt-4">SUBMIT</button><br>
 
             </div>
         </div>
@@ -45,20 +44,20 @@ p{
 
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="box2">
-                <h4>OUR ADDRESS</h4>
+                <h4 class="font-weight-bold">OUR ADDRESS</h4>
 
-                <p>
+                <p class="mt-2 ml-2">
                     <i class="fa fa-map-marker" aria-hidden="true"></i> APWA Complex, 1st Floor, Agha Khan 3 Rd,
                     Garden East, Saddar Town, Karachi
                 </p>
 
-                <h4>OUR EMAIL</h4>
-                <p><i class="fa fa-envelope" aria-hidden="true"></i> info@traveloplan.pk</p>
+                <h4 class="font-weight-bold mt-4">OUR EMAIL</h4>
+                <p class="mt-2 ml-2"><i class="fa fa-envelope" aria-hidden="true"></i> info@traveloplan.pk</p>
 
-                <h4>PHONE</h4>
-                <p><i class="fa fa-phone" aria-hidden="true"> </i> Muhammad Zain : 0310-1021899 </p>
-                <p><i class="fa fa-phone" aria-hidden="true"> </i> Muhammad Shahzaib : 0300-XXXXXXX </p>
-                <p><i class="fa fa-phone" aria-hidden="true"> </i> Muhammad Mustafa : 0314-XXXXXXX </p>
+                <h4 class="font-weight-bold mt-4">PHONE</h4>
+                <p class="mt-2 ml-2"><i class="fa fa-phone" aria-hidden="true"> </i> Muhammad Shahzaib : 0331-XXXXXXX </p>
+                <p class="mt-1 ml-2"><i class="fa fa-phone" aria-hidden="true"> </i> Nadir : 0300-XXXXXXX </p>
+                <p class="mt-1 ml-2"><i class="fa fa-phone" aria-hidden="true"> </i> Sahil : 0314-XXXXXXX </p>
 
 
             </div>

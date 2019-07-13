@@ -16,6 +16,8 @@ Auth::routes();
 
 Route::get('/', 'EventController@index');
 
+Route::get('/userEvent/{userEvent}', 'userEventController@show');
+
 Route::get('/contact', function () {
     return view('Contact');
 });
