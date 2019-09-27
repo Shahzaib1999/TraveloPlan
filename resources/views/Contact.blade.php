@@ -56,8 +56,8 @@ p{
 
                 <h4 class="font-weight-bold mt-4">PHONE</h4>
                 <p class="mt-2 ml-2"><i class="fa fa-phone" aria-hidden="true"> </i> Muhammad Shahzaib : 0331-XXXXXXX </p>
-                <p class="mt-1 ml-2"><i class="fa fa-phone" aria-hidden="true"> </i> Nadir : 0300-XXXXXXX </p>
-                <p class="mt-1 ml-2"><i class="fa fa-phone" aria-hidden="true"> </i> Sahil : 0314-XXXXXXX </p>
+                <p class="mt-1 ml-2"><i class="fa fa-phone" aria-hidden="true"> </i> Zain : 0300-XXXXXXX </p>
+                <p class="mt-1 ml-2"><i class="fa fa-phone" aria-hidden="true"> </i> Mustafa : 0314-XXXXXXX </p>
 
 
             </div>

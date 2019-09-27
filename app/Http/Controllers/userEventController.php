@@ -30,14 +30,17 @@ class userEventController extends Controller
     public function create($id)
     {
 
-        if(Auth::guest()){
+        if (Auth::guest()) {
             return redirect('/login');
+        } else {
+            if (Auth::user()->block) {
+                echo "<script>alert('blocked')</script>";
+                return redirect('Event');
+             } else {
+                $data = events::find($id);
+                return view('userEvent/addUserEvent')->with('data', $data);
+            }
         }
-        else{
-            $data=events::find($id);
-            return view('userEvent/addUserEvent')->with('data',$data);
-        }
-        
     }
 
     /**
@@ -56,19 +59,18 @@ class userEventController extends Controller
         $utp = $request->totalPrice;
 
 
-        $obj=new user_events();
-            $obj->user_id=$uid;
-            $obj->user_name=$uname;
-            $obj->email=$uemail;
-            $obj->contact_number=$ucn;
-            $obj->number_of_packages=$unop;
-            $obj->total_price=$utp;
+        $obj = new user_events();
+        $obj->user_id = $uid;
+        $obj->user_name = $uname;
+        $obj->email = $uemail;
+        $obj->contact_number = $ucn;
+        $obj->number_of_packages = $unop;
+        $obj->total_price = $utp;
 
-            $obj->save();
+        $obj->save();
 
-            return redirect('Event');
-            
-        }
+        return redirect('Event');
+    }
 
     /**
      * Display the specified resource.
@@ -79,8 +81,8 @@ class userEventController extends Controller
     public function show($id)
     {
         $data = user_events::all();
-        
-        return view('MyTours')->with('data',$data);
+
+        return view('MyTours')->with('data', $data);
     }
 
     /**

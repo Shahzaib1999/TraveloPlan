@@ -46,17 +46,15 @@ p{
 
     <div class="row">
         <div class="col-md-6 col-sm-12">
-            <h5>About Traveloplan</h5>
-            <p>Have you ever looked for a trip online?
+            <h1>About Traveloplan</h1>
+            <p style="font-size: 17px;line-height: 1.4;">Have you ever looked for a trip online?
                 Did you noticed there are so many prices out there for the same trip. Traveloplan does the work for
                 you and instantly compare prices with many agencies, So instead of searching for hours and spending
                 too much time Traveloplan makes it easy to find ideal offer for the best price.
                 Traveloplan is public service website that provides travel and tourism services to the public on
                 behalf of suppliers such as activities, airlines, cruise lines, hotels and railways etc. our biggest
-                moto is to serve highest acheivement of comfort and luxury on very low rates.</p>
-
-            <h5>For the first time in Pakistan, Total Travels Services proudly introduces tour packages </h5>
-            <p>We provide Complete travel packages at an affordable price,
+                moto is to serve highest acheivement of comfort and luxury on very low rates.
+                For the first time in Pakistan, Total Travels Services proudly introduces tour packages. We provide Complete travel packages at an affordable price,
                 international and domestic tickets, Visa counselling, Travel Insurance, Cruise & boat services,
                 luxury Island tours, Sightseeing , Village Life, Hot Air Baloon services and many more.</p>
         </div>
@@ -81,7 +79,7 @@ p{
 
     <div class="row">
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="card">
                 <img src="https://ru.opensuse.org/images/0/0b/Icon-user.png" alt="Shahzaib" style="width:100%;height: 250px;">
                 <span class="name">Muhammad Shahzaib</span>
@@ -91,33 +89,33 @@ p{
 
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="card">
                 <img src="https://ru.opensuse.org/images/0/0b/Icon-user.png" alt="Shahzaib" style="width:100%;height: 250px;">
-                <span class="name">Nadir</span>
+                <span class="name">Zain</span>
                 <p class="title mt-2">Marketing Manager</p>
                 <p class="mt-2">XYZ University</p>
             </div>
 
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="card">
                 <img src="https://ru.opensuse.org/images/0/0b/Icon-user.png" alt="zain" style="width:100%;height:250px;">
-                <span class="name">Mamooon</span>
+                <span class="name">Mustafa</span>
                 <p class="title mt-2">Tour Consultant</p>
                 <p class="mt-2">XYZ University</p>
             </div>
         </div>
 
-        <div class="col-md-3">
+        {{-- <div class="col-md-3">
             <div class="card">
                 <img src="https://ru.opensuse.org/images/0/0b/Icon-user.png" alt="Mustafa" style="width:100%;height: 250px;">
                 <span class="name">Sahil</span>
                 <p class="title mt-2">Ticketing Officer</p>
                 <p class="mt-2">XYZ University</p>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 </div>

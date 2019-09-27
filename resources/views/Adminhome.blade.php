@@ -38,7 +38,7 @@
                 <div class="card" id="admin-dashboard">
                     <div class="card-body">
                         <h4 class="card-title mb-0">Traffic</h4>
-                        <div class="small text-muted">November 2017</div>
+                        <div class="small text-muted">2019</div>
                         <canvas id="myChart" width="400" height="120"></canvas>
                         
                     </div><!-- /.card-body -->
@@ -198,9 +198,9 @@
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
             datasets: [{
-                label: '# of Votes',
+                label: '# of Users',
                 data: [12, 19, 3, 5, 2, 3],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
